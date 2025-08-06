@@ -1,6 +1,6 @@
 <?php
 
-namespace Forphp\LaravelBlogify\Models\Traits;
+namespace Forphp\Blogify\Models\Traits;
 
 use Illuminate\Support\Facades\App;
 

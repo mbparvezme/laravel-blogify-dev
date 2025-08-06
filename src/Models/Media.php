@@ -1,6 +1,6 @@
 <?php
 
-namespace Forphp\LaravelBlogify\Models;
+namespace Forphp\Blogify\Models;
 
 use Illuminate\Database\Eloquent\Model;
 use Illuminate\Database\Eloquent\SoftDeletes;

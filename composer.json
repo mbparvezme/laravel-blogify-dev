@@ -16,7 +16,7 @@
   },
   "autoload": {
     "psr-4": {
-      "Forphp\\LaravelBlogify\\": "src/"
+      "Forphp\\Blogify\\": "src/"
     },
     "files": [
       "src/helpers.php"
@@ -25,10 +25,10 @@
   "extra": {
     "laravel": {
       "providers": [
-        "Forphp\\LaravelBlogify\\BlogifyServiceProvider"
+        "Forphp\\Blogify\\BlogifyServiceProvider"
       ],
       "aliases": {
-        "Blogify": "Forphp\\LaravelBlogify\\Facades\\Blogify"
+        "Blogify": "Forphp\\Blogify\\Facades\\Blogify"
       }
     }
   },

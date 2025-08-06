@@ -1,8 +1,13 @@
 <?php
 
-namespace Forphp\LaravelBlogify\Models;
+namespace Forphp\Blogify\Models;
 
-use Forphp\LaravelBlogify\Models\Traits\HasTranslations;
+use Forphp\Blogify\Events\CategoryDeleted;
+use Forphp\Blogify\Events\CategoryDeleting;
+use Forphp\Blogify\Events\CategorySaved;
+use Forphp\Blogify\Events\CategorySaving;
+
+use Forphp\Blogify\Models\Traits\HasTranslations;
 use Illuminate\Database\Eloquent\Model;
 use Illuminate\Database\Eloquent\Relations\BelongsTo;
 use Illuminate\Database\Eloquent\Relations\HasMany;
@@ -14,6 +19,13 @@ class Category extends Model
 
   protected $table = 'blogify_categories';
   protected $guarded = [];
+
+  protected $dispatchesEvents = [
+    'saving'   => CategorySaving::class,
+    'saved'    => CategorySaved::class,
+    'deleting' => CategoryDeleting::class,
+    'deleted'  => CategoryDeleted::class,
+  ];
 
   public function getNameAttribute()
   {

@@ -1,8 +1,13 @@
 <?php
 
-namespace Forphp\LaravelBlogify\Models;
+namespace Forphp\Blogify\Models;
 
-use Forphp\LaravelBlogify\Models\Traits\HasTranslations;
+use Forphp\Blogify\Events\PostDeleted;
+use Forphp\Blogify\Events\PostDeleting;
+use Forphp\Blogify\Events\PostSaved;
+use Forphp\Blogify\Events\PostSaving;
+
+use Forphp\Blogify\Models\Traits\HasTranslations;
 use Illuminate\Database\Eloquent\Model;
 use Illuminate\Database\Eloquent\Relations\BelongsTo;
 use Illuminate\Database\Eloquent\Relations\BelongsToMany;
@@ -17,6 +22,13 @@ class Post extends Model
   protected $casts = [
     'published_at' => 'datetime',
     'interactions' => 'json',
+  ];
+
+  protected $dispatchesEvents = [
+    'deleted'  => PostDeleted::class,
+    'deleting' => PostDeleting::class,
+    'saved'    => PostSaved::class,
+    'saving'   => PostSaving::class,
   ];
 
   public function getTitleAttribute()

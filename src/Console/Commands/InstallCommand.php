@@ -1,6 +1,6 @@
 <?php
 
-namespace Forphp\LaravelBlogify\Console\Commands;
+namespace Forphp\Blogify\Console\Commands;
 
 use Illuminate\Console\Command;
 
@@ -30,7 +30,7 @@ class InstallCommand extends Command
     // Publish the configuration file
     $this->comment('Publishing configuration...');
     $this->call('vendor:publish', [
-      '--provider' => 'Forphp\LaravelBlogify\BlogifyServiceProvider',
+      '--provider' => 'Forphp\Blogify\BlogifyServiceProvider',
       '--tag' => 'blogify-config'
     ]);
 
