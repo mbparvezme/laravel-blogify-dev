@@ -39,7 +39,7 @@ class MediaController extends Controller
             'filename' => $filename,
             'original_filename' => $originalName,
             'mime_type' => 'image/webp',
-            'size' => $image->width() . 'x' . $image->height(), // Storing dimensions
+            'size' => $file->getSize(),
         ]);
 
         event(new MediaUploaded($media));

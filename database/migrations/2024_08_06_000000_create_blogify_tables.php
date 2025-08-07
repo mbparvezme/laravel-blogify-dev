@@ -14,17 +14,17 @@ return new class extends Migration
     // Posts Table
     Schema::create('blogify_posts', function (Blueprint $table) {
       $table->id();
-      $table->foreignId('author_id'); // We'll add the constraint later based on config
+      $table->foreignId('author_id');
       $table->foreignId('category_id')->nullable()->constrained('blogify_categories')->nullOnDelete();
       $table->json('title');
       $table->json('slug')->unique();
       $table->longText('json');
       $table->json('meta_title')->nullable();
       $table->json('meta_description')->nullable();
-      $table->string('status')->default('draft'); // draft, published, scheduled
+      $table->string('status')->default('draft');
       $table->timestamp('published_at')->nullable();
       $table->unsignedBigInteger('view_count')->default(0);
-      $table->json('interactions')->nullable(); // For likes, etc.
+      $table->json('interactions')->nullable();
       $table->timestamps();
       $table->softDeletes();
     });
@@ -64,7 +64,7 @@ return new class extends Migration
       $table->string('filename');
       $table->string('original_filename');
       $table->string('mime_type');
-      $table->unsignedInteger('size');
+      $table->unsignedBigInteger('size');
       $table->json('alt_text')->nullable();
       $table->timestamps();
       $table->softDeletes();

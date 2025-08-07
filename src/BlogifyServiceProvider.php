@@ -13,9 +13,19 @@ use Forphp\Blogify\View\Components\TagsList;
 use Forphp\Blogify\View\Components\MediaList;
 use Forphp\Blogify\Managers\ExtensionManager;
 use Forphp\Blogify\Blogify;
+use Illuminate\Support\Facades\Route;
 
 class BlogifyServiceProvider extends ServiceProvider
 {
+
+  /**
+   * The namespace for the package's controllers.
+   *
+   * @var string|null
+   */
+  protected $namespace = 'Forphp\Blogify\Http\Controllers';
+
+
   /**
    * Register any application services.
    */
@@ -60,5 +70,16 @@ class BlogifyServiceProvider extends ServiceProvider
 
         MediaList::class,
     ]);
+
+    $this->mapApiRoutes();
   }
+
+  protected function mapApiRoutes()
+  {
+    Route::prefix('api/blogify')
+      ->middleware('api')
+      ->namespace($this->namespace)
+      ->group(base_path('routes/api.php'));
+  }
+
 }
